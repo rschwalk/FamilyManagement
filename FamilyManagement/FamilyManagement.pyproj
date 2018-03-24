@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="data.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FamilyManagement.py" />
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +43,8 @@
     <Content Include="templates\about.html" />
     <Content Include="templates\home.html" />
     <Content Include="templates\includes\_navbar.html" />
+    <Content Include="templates\item.html" />
+    <Content Include="templates\items.html" />
     <Content Include="templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
