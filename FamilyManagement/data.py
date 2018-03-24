@@ -1,12 +1,17 @@
+"""
+Family Management application - rschwalk 2018
+Module to handle the required data.
+"""
 import sqlite3
 
 
 class ItemDatabase(object):
+    """ Database class for sglite """
     location = 'family_management.db'
 
     def __init__(self):
         self._db = sqlite3.connect(self.location)
-        
+
         sql = 'CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, ' \
               'name TEXT, username TEXT, password TEXT)'
 
@@ -15,7 +20,8 @@ class ItemDatabase(object):
         self._db.commit()
 
 def items():
-    items = [
+    """ Helper function to create test data """
+    items_list = [
         {
             'id': 1,
             'title': 'Task One',
@@ -39,4 +45,4 @@ def items():
         }
     ]
 
-    return items
+    return items_list
