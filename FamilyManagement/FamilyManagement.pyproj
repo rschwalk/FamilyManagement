@@ -38,11 +38,13 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="templates\home.html" />
+    <Content Include="templates\includes\_navbar.html" />
     <Content Include="templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
     <Folder Include="templates\" />
+    <Folder Include="templates\includes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
