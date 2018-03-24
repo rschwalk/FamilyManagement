@@ -1,3 +1,19 @@
+import sqlite3
+
+
+class ItemDatabase(object):
+    location = 'family_management.db'
+
+    def __init__(self):
+        self._db = sqlite3.connect(self.location)
+        
+        sql = 'CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, ' \
+              'name TEXT, username TEXT, password TEXT)'
+
+        self._cursor = self._db.cursor()
+        self._cursor.execute(sql)
+        self._db.commit()
+
 def items():
     items = [
         {
