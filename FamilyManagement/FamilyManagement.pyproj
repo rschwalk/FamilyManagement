@@ -38,6 +38,7 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="templates\home.html" />
+    <Content Include="templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
