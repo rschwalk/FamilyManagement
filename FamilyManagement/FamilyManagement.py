@@ -59,11 +59,38 @@ def register():
         data = UserData()
         data.add_user(name, username, password)
 
-        # flash('You are now registered, and can log in', 'success')
+        flash('You are now registered, and can log in', 'success')
         return redirect(url_for('index'))
     
     return render_template('register.html', form=form)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password_candidate = request.form['password']
+
+        data = UserData()
+        user_data = data.get_user(username)
+
+        if len(user_data) > 0:
+            password = user_data[0][3]
+
+            if sha256_crypt.verify(password_candidate, password):
+                # Passed
+                session['logged_in'] = True
+                session['username'] = username
+            else:
+                error = 'Invalid login'
+                return render_template('login.html', error=error)
+        else:
+            error = 'Username not found'
+            return render_template('login.html', error=error)
+
+
+
+    return render_template('login.html')
 
 if __name__ == "__main__":
+    app.secret_key = 'Secret123'
     app.run(debug=True)

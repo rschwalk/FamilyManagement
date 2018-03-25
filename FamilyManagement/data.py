@@ -25,6 +25,12 @@ class UserData(object):
         self._db.commit()
         # self.all_rows.append()
 
+    def get_user(self, username):
+        self._cursor.execute('SELECT * FROM users WHERE username=?', (username,))
+        rows = self._cursor.fetchall()
+
+        return rows
+
     def read_all(self):
         self._cursor.execute('''SELECT id, name, username, password FROM users''')
         all_rows = self._cursor.fetchall()
