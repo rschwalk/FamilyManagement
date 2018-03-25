@@ -60,7 +60,7 @@ def register():
         data.add_user(name, username, password)
 
         # flash('You are now registered, and can log in', 'success')
-        redirect(url_for('index'))
+        return redirect(url_for('index'))
     
     return render_template('register.html', form=form)
 
