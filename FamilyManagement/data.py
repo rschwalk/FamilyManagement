@@ -5,8 +5,8 @@ Module to handle the required data.
 import sqlite3
 
 
-class ItemDatabase(object):
-    """ Database class for sglite """
+class UserData(object):
+    """ Database class of the users for sglite """
     location = 'family_management.db'
 
     def __init__(self):
@@ -18,6 +18,18 @@ class ItemDatabase(object):
         self._cursor = self._db.cursor()
         self._cursor.execute(sql)
         self._db.commit()
+        
+    def add_user(self, name, username, password):
+        self._cursor.execute('''INSERT INTO users(name, username, password)
+              VALUES(?, ?, ?)''', (name, username, password))
+        self._db.commit()
+        # self.all_rows.append()
+
+    def read_all(self):
+        self._cursor.execute('''SELECT id, name, username, password FROM users''')
+        all_rows = self._cursor.fetchall()
+
+        return all_rows
 
 def items():
     """ Helper function to create test data """
